@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treats of Rithu | Wholesale Bakery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg:          #0f2d22;
+            --bg-card:     #112e20;
+            --bg-card-2:   #0d2a1e;
+            --gold:        #c9a96e;
+            --gold-light:  #e2c99a;
+            --gold-dim:    rgba(201, 169, 110, 0.13);
+            --gold-border: rgba(201, 169, 110, 0.28);
+            --text-main:   #f0ebe0;
+            --text-body:   #b8ccc0;
+            --text-muted:  rgba(184, 204, 192, 0.50);
+            --divider:     rgba(201, 169, 110, 0.16);
+        }
+
+        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-body);
+            font-family: 'Poppins', sans-serif;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        /* ── Nav ─────────────────────────────── */
+        nav {
+            position: fixed; top: 0; left: 0; width: 100%;
+            z-index: 1000;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 16px 6%;
+            background: rgba(15, 45, 34, 0.92);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--divider);
+            gap: 16px;
+        }
+        .nav-links {
+            display: flex; align-items: center; gap: 6px;
+            flex-wrap: wrap; justify-content: center; flex: 1;
+        }
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.68rem;
+            font-weight: 500;
+            letter-spacing: 0.06em;
+            padding: 5px 12px;
+            border-radius: 50px;
+            border: 1px solid transparent;
+            transition: all 0.25s ease;
+            white-space: nowrap;
+        }
+        .nav-links a:hover {
+            color: var(--gold-light);
+            border-color: var(--gold-border);
+            background: var(--gold-dim);
+        }
+        .nav-right {
+            display: flex; align-items: center; gap: 16px;
+        }
+        .menu-toggle {
+            display: none;
+            color: var(--text-main);
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .menu-toggle:hover { color: var(--gold-light); }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem; font-weight: 700;
+            color: var(--gold-light); letter-spacing: 0.04em;
+            text-decoration: none;
+        }
+        .logo img {
+            height: 40px;
+            width: auto;
+            border-radius: 50%;
+            border: 1px solid var(--gold-border);
+        }
+        .logo span { color: var(--text-main); }
+        .socials {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .socials a {
+            color: var(--gold); font-size: 1.2rem;
+            transition: color 0.2s, transform 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+        .socials a:hover { color: var(--gold-light); transform: scale(1.15); }
+
+        /* ── Utilities ───────────────────────── */
+        .gold-rule {
+            width: 55px; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 14px auto;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 80px 8% 60px;
+            text-align: center; position: relative; overflow: hidden;
+            z-index: 1;
+        }
+        .hero::before {
+            content: '';
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -60%);
+            width: 700px; height: 500px;
+            background: radial-gradient(ellipse, rgba(201,169,110,0.07) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        .hero-eyebrow {
+            display: inline-flex; align-items: center; gap: 10px;
+            font-size: 0.68rem; font-weight: 600;
+            letter-spacing: 0.22em; text-transform: uppercase;
+            color: var(--gold); margin-bottom: 20px;
+        }
+        .hero-eyebrow::before, .hero-eyebrow::after {
+            content: ''; display: block;
+            width: 28px; height: 1px; background: var(--gold); opacity: 0.6;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.8rem, 8vw, 5.2rem);
+            font-weight: 900; font-style: italic;
+            color: var(--text-main); line-height: 1.12; margin-bottom: 26px;
+        }
+        .hero h1 em { font-style: normal; color: var(--gold-light); }
+        .hero-desc {
+            max-width: 680px; margin: 0 auto 38px;
+            font-size: 1rem; color: var(--text-body); line-height: 1.85;
+        }
+        .hero-badge {
+            display: inline-block;
+            border: 1px solid var(--gold-border); color: var(--gold);
+            font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
+            padding: 8px 22px; border-radius: 50px; background: var(--gold-dim);
+        }
+
+        /* ── Floating Animation ──────────────── */
+        .floating-container {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+        .floating-item {
+            position: absolute;
+            bottom: -200px;
+            color: var(--gold);
+            fill: none;
+            stroke: var(--gold);
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            pointer-events: auto;
+            transition: opacity 0.3s ease;
+        }
+        .floating-item:hover {
+            animation-play-state: paused !important;
+            opacity: 1 !important;
+            filter: drop-shadow(0 0 15px var(--gold));
+            cursor: pointer;
+        }
+
+        @keyframes floatUp1 {
+            0% { transform: translateY(0) rotate(0deg) scale(1); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-120vh) rotate(360deg) scale(1); opacity: 0; }
+        }
+        @keyframes floatUp2 {
+            0% { transform: translateY(0) rotate(0deg) scale(1.5); opacity: 0; }
+            10% { opacity: 0.3; }
+            90% { opacity: 0.3; }
+            100% { transform: translateY(-150vh) rotate(-180deg) scale(1.5); opacity: 0; }
+        }
+        @keyframes floatUp3 {
+            0% { transform: translateY(0) rotate(0deg) scale(0.7); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { transform: translateY(-100vh) rotate(100deg) scale(0.7); opacity: 0; }
+        }
+
+        /* Generate variations for 30 items */
+        .item-1  { left: 10%;  width: 70px; animation: floatUp1 25s linear infinite; animation-delay: 0s; }
+        .item-2  { left: 30%;  width: 90px; animation: floatUp2 35s linear infinite; animation-delay: 5s; }
+        .item-3  { left: 55%;  width: 60px; animation: floatUp3 20s linear infinite; animation-delay: 2s; }
+        .item-4  { left: 75%;  width: 80px; animation: floatUp1 28s linear infinite reverse; animation-delay: 8s; }
+        .item-5  { left: 85%;  width: 75px; animation: floatUp2 32s linear infinite; animation-delay: 15s; }
+        .item-6  { left: 20%;  width: 65px; animation: floatUp3 22s linear infinite; animation-delay: 12s; }
+        .item-7  { left: 5%;   width: 55px; animation: floatUp1 30s linear infinite; animation-delay: 3s; }
+        .item-8  { left: 42%;  width: 45px; animation: floatUp2 18s linear infinite; animation-delay: 7s; }
+        .item-9  { left: 65%;  width: 85px; animation: floatUp3 38s linear infinite reverse; animation-delay: 1s; }
+        .item-10 { left: 92%;  width: 50px; animation: floatUp1 24s linear infinite; animation-delay: 10s; }
+        .item-11 { left: 15%;  width: 55px; animation: floatUp2 27s linear infinite reverse; animation-delay: 14s; }
+        .item-12 { left: 48%;  width: 60px; animation: floatUp3 33s linear infinite; animation-delay: 6s; }
+        .item-13 { left: 70%;  width: 50px; animation: floatUp1 19s linear infinite; animation-delay: 9s; }
+        .item-14 { left: 38%;  width: 70px; animation: floatUp2 40s linear infinite reverse; animation-delay: 18s; }
+        .item-15 { left: 8%;   width: 60px; animation: floatUp3 26s linear infinite; animation-delay: 4s; }
+        .item-16 { left: 58%;  width: 75px; animation: floatUp1 34s linear infinite reverse; animation-delay: 20s; }
+        .item-17 { left: 82%;  width: 65px; animation: floatUp2 21s linear infinite; animation-delay: 11s; }
+        .item-18 { left: 25%;  width: 50px; animation: floatUp3 29s linear infinite; animation-delay: 16s; }
+        .item-19 { left: 3%;   width: 70px; animation: floatUp1 36s linear infinite reverse; animation-delay: 22s; }
+        .item-20 { left: 50%;  width: 55px; animation: floatUp2 23s linear infinite; animation-delay: 13s; }
+        .item-21 { left: 88%;  width: 60px; animation: floatUp3 31s linear infinite reverse; animation-delay: 2s; }
+        .item-22 { left: 35%;  width: 45px; animation: floatUp1 17s linear infinite; animation-delay: 19s; }
+        .item-23 { left: 62%;  width: 55px; animation: floatUp2 28s linear infinite reverse; animation-delay: 7s; }
+        .item-24 { left: 12%;  width: 65px; animation: floatUp3 37s linear infinite; animation-delay: 25s; }
+        .item-25 { left: 78%;  width: 70px; animation: floatUp1 22s linear infinite; animation-delay: 17s; }
+        .item-26 { left: 45%;  width: 60px; animation: floatUp2 30s linear infinite reverse; animation-delay: 9s; }
+        .item-27 { left: 18%;  width: 50px; animation: floatUp3 25s linear infinite; animation-delay: 21s; }
+        .item-28 { left: 68%;  width: 55px; animation: floatUp1 33s linear infinite reverse; animation-delay: 14s; }
+        .item-29 { left: 95%;  width: 45px; animation: floatUp2 19s linear infinite; animation-delay: 23s; }
+        .item-30 { left: 52%;  width: 65px; animation: floatUp3 35s linear infinite reverse; animation-delay: 10s; }
+
+        .sparkle {
+            position: absolute;
+            background: var(--gold);
+            border-radius: 50%;
+            bottom: -20px;
+        }
+        .sparkle-1 { left: 15%; width: 4px; height: 4px; animation: floatUp1 15s linear infinite; animation-delay: 1s; }
+        .sparkle-2 { left: 45%; width: 6px; height: 6px; animation: floatUp2 25s linear infinite; animation-delay: 5s; }
+        .sparkle-3 { left: 75%; width: 5px; height: 5px; animation: floatUp3 18s linear infinite; animation-delay: 3s; }
+        .sparkle-4 { left: 90%; width: 3px; height: 3px; animation: floatUp1 22s linear infinite; animation-delay: 8s; }
+        .sparkle-5 { left: 35%; width: 5px; height: 5px; animation: floatUp3 20s linear infinite; animation-delay: 0s; }
+
+        /* ── Page wrapper ────────────────────── */
+        .menu-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px 100px;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ────────────────────────────────────────
+           MENU SECTION
+        ──────────────────────────────────────── */
+        .menu-section {
+            border: 1px solid var(--gold-border);
+            border-radius: 24px;
+            overflow: hidden;
+            margin-bottom: 32px;
+            background: var(--bg-card);
+            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+        }
+        .menu-section:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+            border-color: rgba(201, 169, 110, 0.45);
+        }
+
+        /* Section Header */
+        .menu-section-header {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: end;
+            gap: 16px;
+            padding: 32px 36px 24px;
+            border-bottom: 1px solid var(--divider);
+        }
+
+        .menu-section-eyebrow {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 0.65rem; font-weight: 600;
+            letter-spacing: 0.20em; text-transform: uppercase;
+            color: var(--gold); margin-bottom: 8px;
+        }
+        .menu-section-eyebrow::before {
+            content: ''; display: block;
+            width: 16px; height: 1px; background: var(--gold); opacity: 0.7;
+        }
+
+        .menu-section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+            font-weight: 700; color: var(--text-main);
+            line-height: 1.15;
+        }
+
+        .menu-section-meta {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            gap: 8px;
+        }
+        .meta-pill {
+            display: inline-flex; align-items: center; gap: 6px;
+            font-size: 0.7rem; color: var(--text-muted);
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.07);
+            padding: 4px 12px; border-radius: 50px;
+            white-space: nowrap;
+        }
+        .meta-pill i { color: var(--gold); font-size: 0.65rem; }
+
+        /* Item Rows */
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            padding: 18px 36px;
+            border-bottom: 1px solid rgba(201,169,110,0.07);
+            transition: background 0.22s, padding-left 0.22s;
+            position: relative;
+        }
+        .menu-item:last-child { border-bottom: none; }
+
+        .menu-item::before {
+            content: '';
+            position: absolute; left: 0; top: 25%; bottom: 25%;
+            width: 3px; background: var(--gold);
+            border-radius: 0 3px 3px 0;
+            transform: scaleY(0); transform-origin: center;
+            transition: transform 0.22s;
+        }
+        .menu-item:hover {
+            background: rgba(255,255,255,0.03);
+            padding-left: 42px;
+        }
+        .menu-item:hover::before { transform: scaleY(1); }
+
+        .menu-item-left { flex: 1; }
+
+        .menu-item-name {
+            font-size: 0.95rem; font-weight: 600;
+            color: var(--text-main); margin-bottom: 2px;
+        }
+        .menu-item-desc {
+            font-size: 0.76rem; color: var(--text-muted);
+        }
+
+        .menu-item-price {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem; font-weight: 700;
+            color: var(--gold); white-space: nowrap;
+            background: var(--gold-dim);
+            border: 1px solid var(--gold-border);
+            padding: 5px 16px; border-radius: 50px;
+            min-width: 80px; text-align: center;
+        }
+
+        /* ── Ornament divider (between sections) */
+        .ornament-divider {
+            display: flex; align-items: center;
+            gap: 16px; opacity: 0.35;
+            margin: 4px 0 28px;
+        }
+        .ornament-divider::before, .ornament-divider::after {
+            content: ''; flex: 1; height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+        .ornament-divider i { color: var(--gold); font-size: 0.8rem; }
+
+        /* ── Footer ──────────────────────────── */
+        footer {
+            background: var(--bg-card-2);
+            border-top: 1px solid var(--divider);
+            padding: 80px 10% 56px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.9rem; font-weight: 700;
+            font-style: italic; color: var(--gold-light); margin-bottom: 6px;
+        }
+        .thank-you {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem; font-style: italic;
+            color: var(--text-main); margin-bottom: 12px;
+        }
+        footer > p { color: var(--text-muted); max-width: 480px; margin: 0 auto; font-size: 0.88rem; }
+        .footer-contact { margin-top: 36px; display: flex; flex-direction: column; gap: 5px; color: var(--text-body); font-size: 0.86rem; }
+        .footer-contact strong { color: var(--gold-light); }
+        .fssai-box {
+            display: inline-block; margin-top: 28px;
+            padding: 8px 20px;
+            border: 1px dashed var(--gold-border);
+            border-radius: 8px; font-size: 0.73rem;
+            color: var(--text-muted); letter-spacing: 0.05em;
+        }
+        .footer-star { font-size: 1.3rem; color: var(--gold); opacity: 0.55; margin-bottom: 20px; }
+
+        /* ── Bottom Single Card ─────────────────────── */
+        .single-bento-card {
+            background: var(--bg-card);
+            border: 1px solid var(--gold-border);
+            border-radius: 24px;
+            padding: 40px;
+            margin-top: 60px;
+            display: grid;
+            grid-template-columns: 1fr 1px 1.2fr;
+            gap: 40px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+        }
+        .single-bento-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+            border-color: rgba(201, 169, 110, 0.45);
+        }
+        .single-bento-card::before {
+            content: '';
+            position: absolute; top: 0; left: 0; width: 4px; height: 100%;
+            background: linear-gradient(to bottom, var(--gold), transparent);
+        }
+        .bento-col {
+            display: flex; flex-direction: column; gap: 16px;
+        }
+        .bento-divider {
+            background: linear-gradient(to bottom, transparent, var(--gold-border), transparent);
+            width: 1px;
+            height: 100%;
+        }
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem; font-weight: 700;
+            color: var(--gold-light); letter-spacing: 0.04em;
+            margin-bottom: 20px;
+        }
+        .footer-logo img {
+            height: 50px;
+            width: auto;
+            border-radius: 50%;
+            border: 1px solid var(--gold-border);
+        }
+        .bento-card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem; font-weight: 700;
+            color: var(--gold-light); 
+            margin-bottom: 4px;
+        }
+        .bento-card-content {
+            font-size: 0.85rem; color: var(--text-body); line-height: 1.8;
+        }
+        .bento-contact-row {
+            display: flex; align-items: center; gap: 12px; margin-bottom: 12px;
+        }
+        .bento-contact-row i {
+            color: var(--gold); font-size: 1.1rem; width: 24px; text-align: center;
+        }
+        .bento-contact-row a {
+            color: var(--text-main); text-decoration: none; transition: color 0.2s;
+        }
+        .bento-contact-row a:hover { color: var(--gold-light); }
+
+        /* ── Responsive ──────────────────────── */
+        @media (max-width: 860px) {
+            .menu-toggle { display: block; }
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(15, 45, 34, 0.98);
+                backdrop-filter: blur(14px);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 10px 8%;
+                border-bottom: 1px solid var(--divider);
+                display: none; /* hidden by default */
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .nav-links a {
+                width: 100%;
+                padding: 14px 0;
+                font-size: 0.9rem;
+                border-radius: 0;
+                border: none;
+                border-bottom: 1px solid rgba(255,255,255,0.05);
+            }
+            .nav-links a:last-child {
+                border-bottom: none;
+            }
+        }
+
+        @media (max-width: 680px) {
+            .menu-section-header { grid-template-columns: 1fr; }
+            .menu-section-meta { text-align: left; }
+            .menu-item { padding: 16px 24px; }
+            .menu-item:hover { padding-left: 30px; }
+            .single-bento-card { grid-template-columns: 1fr; gap: 30px; padding: 30px 24px; }
+            .bento-divider { width: 100%; height: 1px; background: linear-gradient(to right, transparent, var(--gold-border), transparent); }
+            .hero { padding: 140px 6% 70px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ── Floating Animation Background ──────────────── -->
+    <div class="floating-container">
+        <!-- Sparkles -->
+        <div class="sparkle sparkle-1"></div>
+        <div class="sparkle sparkle-2"></div>
+        <div class="sparkle sparkle-3"></div>
+        <div class="sparkle sparkle-4"></div>
+        <div class="sparkle sparkle-5"></div>
+
+        <!-- 1. Croissant -->
+        <svg class="floating-item item-1" viewBox="0 0 100 100">
+            <path d="M20,50 Q30,20 50,20 Q70,20 80,50 Q90,60 85,75 Q75,65 50,65 Q25,65 15,75 Q10,60 20,50 Z" />
+            <path d="M30,35 Q40,45 50,45 Q60,45 70,35" fill="none" stroke="currentColor" />
+            <path d="M25,50 Q40,60 50,60 Q60,60 75,50" fill="none" stroke="currentColor" />
+        </svg>
+        
+        <!-- 2. Cupcake -->
+        <svg class="floating-item item-2" viewBox="0 0 100 100">
+            <path d="M30,80 L70,80 L80,50 L20,50 Z" />
+            <path d="M20,50 Q20,20 50,20 Q80,20 80,50" />
+            <circle cx="50" cy="15" r="5" fill="var(--gold)" />
+            <path d="M35,80 L35,50 M50,80 L50,50 M65,80 L65,50" stroke-width="1" stroke="currentColor"/>
+        </svg>
+
+        <!-- 3. Brownie -->
+        <svg class="floating-item item-3" viewBox="0 0 100 100">
+            <rect x="25" y="35" width="50" height="40" rx="4" />
+            <path d="M35,45 Q45,55 55,40" stroke-width="1" fill="none" stroke="currentColor"/>
+            <circle cx="35" cy="60" r="3" fill="var(--gold)" />
+            <circle cx="65" cy="55" r="2" fill="var(--gold)" />
+            <circle cx="50" cy="65" r="4" fill="var(--gold)" />
+        </svg>
+
+        <!-- 4. Cookie -->
+        <svg class="floating-item item-4" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="30" />
+            <circle cx="40" cy="40" r="3" fill="var(--gold)" />
+            <circle cx="60" cy="45" r="2.5" fill="var(--gold)" />
+            <circle cx="50" cy="60" r="3.5" fill="var(--gold)" />
+            <circle cx="35" cy="55" r="2" fill="var(--gold)" />
+            <circle cx="65" cy="58" r="3" fill="var(--gold)" />
+        </svg>
+
+        <!-- 5. Bread Loaf -->
+        <svg class="floating-item item-5" viewBox="0 0 100 100">
+            <path d="M20,60 L20,40 Q20,20 50,20 Q80,20 80,40 L80,60 Q80,80 50,80 Q20,80 20,60 Z" />
+            <path d="M25,35 Q50,30 75,35" fill="none" stroke="currentColor" />
+            <path d="M25,45 Q50,40 75,45" fill="none" stroke="currentColor" />
+            <path d="M25,55 Q50,50 75,55" fill="none" stroke="currentColor" />
+        </svg>
+
+        <!-- 6. Cake Slice -->
+        <svg class="floating-item item-6" viewBox="0 0 100 100">
+            <path d="M20,70 L80,70 L80,30 L20,60 Z" />
+            <path d="M35,66 L35,50 M55,68 L55,40 M70,69 L70,35" stroke-dasharray="2,2" stroke="currentColor"/>
+            <circle cx="80" cy="25" r="5" fill="var(--gold)"/>
+        </svg>
+
+        <!-- 7. Coffee Mug -->
+        <!-- <svg class="floating-item item-7" viewBox="0 0 100 100">
+            <path d="M30,35 H70 V70 Q70,85 50,85 Q30,85 30,70 Z" />
+            <path d="M70,45 Q85,45 85,57 Q85,70 70,70" fill="none" stroke="currentColor" stroke-width="4"/>
+            <path d="M45,15 Q48,22 45,25 M55,15 Q58,22 55,25" fill="none" stroke="currentColor" stroke-width="2" />
+        </svg> -->
+
+        <!-- 8. Coffee Bean -->
+        <!-- <svg class="floating-item item-8" viewBox="0 0 100 100">
+            <ellipse cx="50" cy="50" rx="25" ry="35" transform="rotate(30 50 50)" />
+            <path d="M40,25 Q55,50 40,75" fill="none" stroke="var(--gold)" stroke-width="3" />
+        </svg> -->
+
+        <!-- 9. Donut -->
+        <!-- <svg class="floating-item item-9" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="35" fill="none" stroke="currentColor" stroke-width="12" />
+            <path d="M35,35 L38,32 M62,35 L65,32 M50,70 L50,75" stroke="var(--gold)" stroke-width="4" />
+        </svg> -->
+
+        <!-- 10. French Press 
+        <svg class="floating-item item-10" viewBox="0 0 100 100">
+            <rect x="35" y="30" width="30" height="50" rx="2" fill="none" stroke="currentColor" stroke-width="3"/>
+            <path d="M35,35 H65 M50,15 V30" stroke="currentColor" stroke-width="3"/>
+            <rect x="30" y="80" width="40" height="4" fill="currentColor"/>
+        </svg>
+        -->
+
+        <!-- 11. Macaron -->
+        <svg class="floating-item item-11" viewBox="0 0 100 100">
+            <rect x="25" y="35" width="50" height="12" rx="6" />
+            <rect x="25" y="53" width="50" height="12" rx="6" />
+            <rect x="28" y="47" width="44" height="6" fill="var(--gold)" />
+        </svg>
+
+        <!-- 12. Paper Coffee Cup -->
+        <!-- <svg class="floating-item item-12" viewBox="0 0 100 100">
+            <path d="M35,35 L40,85 H60 L65,35 Z" />
+            <path d="M37,50 H63" stroke="var(--gold)" stroke-width="10" />
+            <path d="M32,30 H68 L66,35 H34 Z" fill="currentColor"/>
+        </svg> -->
+
+        <!-- 13. Whisk -->
+        <!-- <svg class="floating-item item-13" viewBox="0 0 100 100">
+            <path d="M50,20 Q65,40 50,65 Q35,40 50,20" fill="none" stroke="currentColor" stroke-width="2"/>
+            <path d="M50,20 Q75,40 50,65 Q25,40 50,20" fill="none" stroke="currentColor" stroke-width="2"/>
+            <rect x="47" y="65" width="6" height="20" rx="2" fill="var(--gold)" />
+        </svg> -->
+
+        <!-- 14. Teapot -->
+        <svg class="floating-item item-14" viewBox="0 0 100 100">
+            <path d="M30,75 Q30,45 50,45 Q70,45 70,75 Z" />
+            <path d="M70,55 Q85,55 85,65 Q85,75 70,75" fill="none" stroke="currentColor" stroke-width="3"/>
+            <path d="M30,65 L15,55 L15,65 Z" fill="currentColor"/>
+            <circle cx="50" cy="40" r="4" fill="var(--gold)" />
+        </svg>
+
+        <!-- 15. Moka Pot -->
+        <!-- <svg class="floating-item item-15" viewBox="0 0 100 100">
+            <path d="M35,85 L40,55 L35,25 H65 L60,55 L65,85 Z" fill="none" stroke="currentColor" stroke-width="3"/>
+            <path d="M62,45 Q75,45 75,60 Q75,75 62,75" fill="none" stroke="currentColor" stroke-width="3"/>
+        </svg> -->
+
+        <!-- 16. Pretzel -->
+        <svg class="floating-item item-16" viewBox="0 0 100 100">
+            <path d="M50,60 Q30,80 20,60 Q10,40 30,30 Q50,20 70,30 Q90,40 80,60 Q70,80 50,60" fill="none" stroke="currentColor" stroke-width="5" />
+            <circle cx="30" cy="45" r="1.5" fill="var(--gold)"/>
+            <circle cx="70" cy="45" r="1.5" fill="var(--gold)"/>
+        </svg>
+
+        <!-- 17. Baguette -->
+        <!-- <svg class="floating-item item-17" viewBox="0 0 100 100">
+            <rect x="20" y="45" width="60" height="15" rx="8" transform="rotate(-30 50 50)"/>
+            <path d="M40,45 L45,55 M55,35 L60,45" stroke="var(--gold)" stroke-width="2" />
+        </svg> -->
+
+        <!-- 18. Tea Bag -->
+        <svg class="floating-item item-18" viewBox="0 0 100 100">
+            <path d="M35,45 L40,35 H60 L65,45 V80 H35 Z" fill="none" stroke="currentColor" stroke-width="3"/>
+            <path d="M50,35 V20 H65" fill="none" stroke="currentColor" stroke-width="2"/>
+            <rect x="62" y="15" width="10" height="8" fill="var(--gold)"/>
+        </svg>
+
+        <!-- 19. Muffin -->
+        <svg class="floating-item item-19" viewBox="0 0 100 100">
+            <path d="M35,80 L65,80 L72,55 H28 Z" />
+            <path d="M25,55 Q25,30 50,30 Q75,30 75,55" fill="var(--gold)" opacity="0.8"/>
+        </svg>
+
+        <!-- 20. Sandwich -->
+        <svg class="floating-item item-20" viewBox="0 0 100 100">
+            <path d="M20,70 L80,70 L50,25 Z" fill="none" stroke="currentColor" stroke-width="3"/>
+            <path d="M25,62 L75,62" stroke="var(--gold)" stroke-width="4" />
+        </svg>
+
+        <!-- 21. Milk Carton -->
+        <svg class="floating-item item-21" viewBox="0 0 100 100">
+            <path d="M35,85 V45 L50,30 L65,45 V85 Z" fill="none" stroke="currentColor" stroke-width="3"/>
+            <circle cx="50" cy="60" r="8" fill="var(--gold)" />
+        </svg>
+
+        <!-- 22. Sugar Cubes -->
+        <svg class="floating-item item-22" viewBox="0 0 100 100">
+            <rect x="30" y="55" width="20" height="20" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+            <rect x="52" y="45" width="20" height="20" rx="2" fill="var(--gold)" />
+        </svg>
+
+        <!-- 23. Honey Dipper -->
+        <svg class="floating-item item-23" viewBox="0 0 100 100">
+            <rect x="47" y="20" width="6" height="60" rx="3" fill="currentColor"/>
+            <path d="M35,30 H65 M35,40 H65 M35,50 H65" stroke="var(--gold)" stroke-width="4"/>
+        </svg>
+
+        <!-- 24. Espresso Portafilter -->
+        <svg class="floating-item item-24" viewBox="0 0 100 100">
+            <circle cx="40" cy="40" r="20" fill="none" stroke="currentColor" stroke-width="4"/>
+            <rect x="58" y="37" width="30" height="6" rx="3" fill="currentColor"/>
+            <path d="M35,58 L45,58" stroke="currentColor" stroke-width="5"/>
+        </svg>
+
+        <!-- 25. Rolling Pin -->
+        <svg class="floating-item item-25" viewBox="0 0 100 100">
+            <rect x="25" y="45" width="50" height="12" fill="none" stroke="currentColor" stroke-width="2"/>
+            <rect x="15" y="48" width="10" height="6" fill="var(--gold)"/>
+            <rect x="75" y="48" width="10" height="6" fill="var(--gold)"/>
+        </svg>
+
+        <!-- 26. To-Go Bag -->
+        <svg class="floating-item item-26" viewBox="0 0 100 100">
+            <path d="M30,40 L35,30 H65 L70,40 V85 H30 Z" fill="none" stroke="currentColor" stroke-width="3"/>
+            <circle cx="50" cy="60" r="10" fill="var(--gold)" />
+        </svg>
+
+        <!-- 27. Jam Jar -->
+        <svg class="floating-item item-27" viewBox="0 0 100 100">
+            <rect x="35" y="45" width="30" height="35" rx="5" fill="none" stroke="currentColor" stroke-width="3"/>
+            <rect x="32" y="38" width="36" height="7" rx="2" fill="var(--gold)"/>
+        </svg>
+
+        <!-- 28. Coffee Grinder -->
+        <svg class="floating-item item-28" viewBox="0 0 100 100">
+            <rect x="35" y="55" width="30" height="30" fill="none" stroke="currentColor" stroke-width="3"/>
+            <path d="M50,55 V40 L70,35" fill="none" stroke="currentColor" stroke-width="3"/>
+            <circle cx="50" cy="48" r="8" fill="var(--gold)" />
+        </svg>
+
+        <!-- 29. Fork and Spoon -->
+        <svg class="floating-item item-29" viewBox="0 0 100 100">
+            <path d="M35,25 V75 M30,25 V45 Q35,50 40,45 V25" fill="none" stroke="currentColor" stroke-width="2" />
+            <ellipse cx="65" cy="35" rx="8" ry="12" fill="none" stroke="var(--gold)" stroke-width="2" />
+            <path d="M65,47 V75" stroke="var(--gold)" stroke-width="2" />
+        </svg>
+
+        <!-- 30. Chef's Hat -->
+        <svg class="floating-item item-30" viewBox="0 0 100 100">
+            <path d="M30,55 H70 V75 H30 Z" fill="none" stroke="currentColor" stroke-width="2"/>
+            <path d="M30,55 Q20,45 35,35 Q50,20 65,35 Q80,45 70,55" fill="var(--gold)" opacity="0.6"/>
+        </svg>
+    </div>
+
+    <nav>
+        <a href="/" class="logo">
+            <img src="logo.jpeg" alt="Treats of Rithu Logo">
+            <div><span>Treats</span> of Rithu</div>
+        </a>
+        <div class="nav-links">
+            <a href="#brownies">Brownies</a>
+            <a href="#buns">Buns</a>
+            <a href="#puffs">Puffs</a>
+            <a href="#cakes-rolls">Cakes & Rolls</a>
+            <a href="#cookies">Cookies</a>
+            <a href="#cream-cakes">Cream Cakes</a>
+            <a href="#about">About</a>
+        </div>
+        <div class="nav-right">
+            <div class="socials">
+                <a href="tel:+919087921687" aria-label="Call Us"><i class="fas fa-phone-alt" style="font-size: 0.95em;"></i></a>
+                <a href="https://instagram.com/treatsofrithu" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+            <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <div class="hero-eyebrow" data-aos="fade-down">Wholesale Bakery Supplier</div>
+            <h1 data-aos="fade-up" data-aos-delay="100">
+                Deliciously Crafted<br><em>for Wholesale</em>
+            </h1>
+            <div class="gold-rule" data-aos="fade-up" data-aos-delay="180"></div>
+            <p class="hero-desc" data-aos="fade-up" data-aos-delay="220">
+                Treats of Rithu specializes in high-quality bakery products — fresh, consistent, and
+                affordable for bulk orders. Trusted by retailers and resellers across the region.
+            </p>
+            <div class="hero-badge" data-aos="fade-up" data-aos-delay="300">
+                <i class="fas fa-leaf" style="margin-right:7px;"></i>
+                FSSAI Registered &nbsp;·&nbsp; Fresh Daily
+            </div>
+        </div>
+    </header>
+
+    <div class="menu-wrapper">
+
+        <!-- ══ BROWNIES ══ -->
+        <div class="menu-section" id="brownies" data-aos="fade-up">
+            <div class="menu-section-header">
+                <div>
+                    <div class="menu-section-eyebrow">Signature Series</div>
+                    <div class="menu-section-title">Brownies</div>
+                </div>
+                <div class="menu-section-meta">
+                    <div class="meta-pill"><i class="fas fa-clock"></i> Shelf Life: 10 Days</div>
+                    <div class="meta-pill"><i class="fas fa-box"></i> Cool &amp; dry · Refrigerate in summer</div>
+                    <div class="meta-pill"><i class="fas fa-flask"></i> Maida · Butter · Chocolate · Sunflower Oil</div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-left">
+                    <div class="menu-item-name">Classic / Regular Brownie</div>
+                    <div class="menu-item-desc">Fudgy texture · No palm oil · Rich dark chocolate</div>
+                </div>
+                <span class="menu-item-price">₹30 – ₹35</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-left">
+                    <div class="menu-item-name">Eggless Brownie</div>
+                    <div class="menu-item-desc">Vegetarian friendly · Same fudgy perfection</div>
+                </div>
+                <span class="menu-item-price">₹35</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-left">
+                    <div class="menu-item-name">Assorted Pack</div>
+                    <div class="menu-item-desc">Mix of Classic + Eggless · Best for gifting</div>
+                </div>
+                <span class="menu-item-price">₹55</span>
+            </div>
+        </div>
+
+        <div class="ornament-divider"><i class="fas fa-seedling"></i></div>
+
+        <!-- ══ ARTISAN BUNS ══ -->
+        <div class="menu-section" id="buns" data-aos="fade-up">
+            <div class="menu-section-header">
+                <div>
+                    <div class="menu-section-eyebrow">Artisan Range</div>
+                    <div class="menu-section-title">Artisan Buns</div>
+                </div>
+                <div class="menu-section-meta">
+                    <div class="meta-pill"><i class="fas fa-clock"></i> Shelf Life: 4 Days</div>
+                    <div class="meta-pill"><i class="fas fa-snowflake"></i> Cool &amp; dry · Avoid sunlight</div>
+                    <div class="meta-pill"><i class="fas fa-flask"></i> Maida · Yeast · Butter · Milk</div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-left">
+                    <div class="menu-item-name">Jam Bun</div>
+                    <div class="menu-item-desc">Soft pull-apart bun with sweet jam centre</div>
+                </div>
+                <span class="menu-item-price">₹10</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-left">
+                    <div class="menu-item-name">Cream Bun</div>
+                    <div class="menu-item-desc">Pillowy soft · filled with fresh cream</div>
+                </div>
+                <span class="menu-item-price">₹14</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-left">
+                    <div class="menu-item-name">Palkova Bun</div>
+                    <div class="menu-item-desc">Traditional palkova sweetness inside a soft bun</div>
+                </div>
+                <span class="menu-item-price">₹15</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-left">
+                    <div class="menu-item-name">Garlic Bread</div>
+                    <div class="menu-item-desc">Crispy edges · buttery garlic aroma</div>
+                </div>
+                <span class="menu-item-price">₹15</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-left">
+                    <div class="menu-item-name">Korean Bun</div>
+                    <div class="menu-item-desc">Trendy soft bun · lightly sweet &amp; chewy</div>
+                </div>
+                <span class="menu-item-price">₹30</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-left">
+                    <div class="menu-item-name">Bun Maska</div>
+                    <div class="menu-item-desc">Classic Irani café style · butter-slathered</div>
+                </div>
+                <span class="menu-item-price">₹20</span>
+            </div>
+        </div>
+
+        <div class="ornament-divider"><i class="fas fa-seedling"></i></div>
+
+        <!-- ══ PUFFS ══ -->
+        <div class="menu-section" id="puffs" data-aos="fade-up">
+            <div class="menu-section-header">
+                <div>
+                    <div class="menu-section-eyebrow">Savory Bakes</div>
+                    <div class="menu-section-title">Puffs</div>
+                </div>
+                <div class="menu-section-meta">
+                    <div class="meta-pill"><i class="fas fa-clock"></i> Shelf Life: 1 Day</div>
+                    <div class="meta-pill"><i class="fas fa-box"></i> Store in a dry place</div>
+                    <div class="meta-pill"><i class="fas fa-flask"></i> Maida · Butter · Salt · Fillings</div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-left">
+                    <div class="menu-item-name">Veg Puff</div>
+                    <div class="menu-item-desc">Flaky pastry · spiced vegetable filling</div>
+                </div>
+                <span class="menu-item-price">₹12</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-left">
+                    <div class="menu-item-name">Egg Puff</div>
+                    <div class="menu-item-desc">Flaky pastry · whole egg with masala</div>
+                </div>
+                <span class="menu-item-price">₹14</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-left">
+                    <div class="menu-item-name">Mushroom Puff</div>
+                    <div class="menu-item-desc">Flaky pastry · sautéed mushroom &amp; herbs</div>
+                </div>
+                <span class="menu-item-price">₹15</span>
+            </div>
+        </div>
+
+        <!-- ══ CAKES & ROLLS ══ -->
+        <div class="menu-section" id="cakes-rolls" data-aos="fade-up">
+            <div class="menu-section-header">
+                <div>
+                    <div class="menu-section-eyebrow">Everyday Delights</div>
+                    <div class="menu-section-title">Cakes &amp; Rolls</div>
+                </div>
+                <div class="menu-section-meta">
+                    <div class="meta-pill"><i class="fas fa-clock"></i> Shelf Life: 5 Days</div>
+                    <div class="meta-pill"><i class="fas fa-box"></i> Store in a cool and dry place</div>
+                </div>
+            </div>
+
+            <!-- Subheader: Tea Cakes & Puddings -->
+            <div style="padding: 20px 36px 10px; font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--gold); border-bottom: 1px solid rgba(201,169,110,0.1);">
+                Tea Cakes &amp; Puddings
+            </div>
+
+            <div class="menu-item">
+                <div class="menu-item-left">
+                    <div class="menu-item-name">T-Cake</div>
+                </div>
+                <span class="menu-item-price">₹10</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-left">
+                    <div class="menu-item-name">Pudding</div>
+                </div>
+                <span class="menu-item-price">₹12</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-left">
+                    <div class="menu-item-name">Rose Milk Cake</div>
+                </div>
+                <span class="menu-item-price">₹12</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-left">
+                    <div class="menu-item-name">Chocolate Cake</div>
+                </div>
+                <span class="menu-item-price">₹12</span>
+            </div>
+
+            <!-- Subheader: Roll Cakes -->
+            <div style="padding: 24px 36px 10px; font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--gold); border-bottom: 1px solid rgba(201,169,110,0.1); border-top: 1px solid rgba(201,169,110,0.07);">
+                Roll Cakes
+            </div>
+
+            <div class="menu-item">
+                <div class="menu-item-left">
+                    <div class="menu-item-name">Vanilla Roll</div>
+                </div>
+                <span class="menu-item-price">₹14</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-left">
+                    <div class="menu-item-name">Jam Roll</div>
+                </div>
+                <span class="menu-item-price">₹14</span>
+            </div>
+        </div>
+
+        <div class="ornament-divider"><i class="fas fa-seedling"></i></div>
+
+        <!-- ══ COOKIES ══ -->
+        <div class="menu-section" id="cookies" data-aos="fade-up">
+            <div class="menu-section-header">
+                <div>
+                    <div class="menu-section-eyebrow">Freshly Baked</div>
+                    <div class="menu-section-title">Cookies</div>
+                    <div style="font-size:0.8rem;color:var(--text-muted);margin-top:6px;">Crispy on the edge and soft inside · Per KG pricing</div>
+                </div>
+                <div class="menu-section-meta">
+                    <div class="meta-pill"><i class="fas fa-clock"></i> Shelf Life: 1 Month</div>
+                    <div class="meta-pill"><i class="fas fa-box"></i> Store in a dry place</div>
+                    <div class="meta-pill"><i class="fas fa-leaf"></i> No Artificial Colors · No Palm Oil</div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-left">
+                    <div class="menu-item-name">Salt Cookies</div>
+                    <div class="menu-item-desc">Lightly salted · perfectly crisp</div>
+                </div>
+                <span class="menu-item-price">₹300 / kg</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-left">
+                    <div class="menu-item-name">Cassack Cookies</div>
+                    <div class="menu-item-desc">Classic cassack flavour · melt-in-mouth crunch</div>
+                </div>
+                <span class="menu-item-price">₹300 / kg</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-left">
+                    <div class="menu-item-name">Checked Cookies</div>
+                    <div class="menu-item-desc">Signature chequered pattern · rich buttery taste</div>
+                </div>
+                <span class="menu-item-price">₹300 / kg</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-left">
+                    <div class="menu-item-name">Coconut Cookies</div>
+                    <div class="menu-item-desc">Real coconut · toasted and fragrant</div>
+                </div>
+                <span class="menu-item-price">₹300 / kg</span>
+            </div>
+        </div>
+
+        <div class="ornament-divider"><i class="fas fa-seedling"></i></div>
+
+        <!-- ══ FRESH CREAM CAKES ══ -->
+        <div class="menu-section" id="cream-cakes" data-aos="fade-up">
+            <div class="menu-section-header">
+                <div>
+                    <div class="menu-section-eyebrow">Celebration Cakes</div>
+                    <div class="menu-section-title">Fresh Cream Cakes</div>
+                    <div style="font-size:0.8rem;color:var(--text-muted);margin-top:6px;">½ kg portions · Made to order</div>
+                </div>
+                <div class="menu-section-meta">
+                    <div class="meta-pill"><i class="fas fa-clock"></i> Shelf Life: 4 Days</div>
+                    <div class="meta-pill"><i class="fas fa-snowflake"></i> Keep Refrigerated</div>
+                    <div class="meta-pill"><i class="fas fa-flask"></i> Flour · Cream · Eggs · Natural Flavours</div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-left">
+                    <div class="menu-item-name">Blackforest</div>
+                    <div class="menu-item-desc">Classic chocolate sponge · cherries · whipped cream</div>
+                </div>
+                <span class="menu-item-price">₹300</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-left">
+                    <div class="menu-item-name">White Forest</div>
+                    <div class="menu-item-desc">Vanilla sponge · white chocolate · cream rosettes</div>
+                </div>
+                <span class="menu-item-price">₹300</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-left">
+                    <div class="menu-item-name">Choco Truffle</div>
+                    <div class="menu-item-desc">Rich chocolate ganache · truffle frosting</div>
+                </div>
+                <span class="menu-item-price">₹400</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-left">
+                    <div class="menu-item-name">Red Velvet</div>
+                    <div class="menu-item-desc">Velvety red sponge · cream cheese frosting</div>
+                </div>
+                <span class="menu-item-price">₹400</span>
+            </div>
+        </div>
+
+        <div class="ornament-divider"><i class="fas fa-leaf"></i></div>
+
+        <!-- ══ BOTTOM BENTO SECTION ══ -->
+        <div class="single-bento-card" id="about" data-aos="fade-up">
+            
+            <!-- Contact Col -->
+            <div class="bento-col">
+                <div class="bento-card-title">Contact &amp; Info</div>
+                <div class="bento-card-content">
+                    <div class="bento-contact-row">
+                        <i class="fas fa-phone-alt" style="font-size: 0.95em;"></i>
+                        <div><strong>Phone:</strong> <a href="tel:+910000000000">+91 00000 00000</a></div>
+                    </div>
+                    <div class="bento-contact-row">
+                        <i class="fas fa-user"></i>
+                        <div><strong>Founder:</strong> Rithika Subash</div>
+                    </div>
+                    <div class="bento-contact-row">
+                        <i class="fas fa-certificate"></i>
+                        <div><strong>FSSAI Registration ID:</strong> 22426552000290</div>
+                    </div>
+                    <div class="bento-contact-row">
+                        <i class="fab fa-instagram"></i>
+                        <div><strong>Instagram (Business):</strong> <a href="https://instagram.com/treatsofrithu" target="_blank">@treatsofrithu</a></div>
+                    </div>
+                    <div class="bento-contact-row">
+                        <i class="fab fa-instagram"></i>
+                        <div><strong>Instagram (Main):</strong> <a href="https://instagram.com/_rithika_subash" target="_blank">@_rithika_subash</a></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <div class="bento-divider"></div>
+
+            <!-- About Us Col -->
+            <div class="bento-col">
+                <div class="bento-card-title">About Us</div>
+                <div class="bento-card-content">
+                    <p style="margin-bottom: 12px;">Treats of Rithu is a dedicated wholesale supplier specializing in high-quality bakery products. Known for its freshness, consistency, and taste, the unit caters to bakeries, cafes, parties, retail stores, and bulk customers by providing a wide range of items such as cakes, pastries, breads, cookies, and customized baked goods.</p>
+                    <p>With a strong focus on quality ingredients and hygienic preparation, Treats of Rithu ensures that every product meets high standards while maintaining affordable pricing for bulk orders. The brand aims to be a reliable partner for businesses by delivering delicious baked products on time and in large quantities.</p>
+                </div>
+            </div>
+            
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="footer-star" data-aos="fade-up">✦</div>
+        <div class="footer-logo" data-aos="fade-up">
+            <img src="logo.jpeg" alt="Treats of Rithu Logo">
+            <span>Treats of Rithu</span>
+        </div>
+        <div class="gold-rule" style="margin-bottom:22px;" data-aos="fade-up"></div>
+        <div class="thank-you" data-aos="fade-up">Thank You for Growing with Us</div>
+        <p data-aos="fade-up">We truly appreciate your trust and support. It means a lot to us to be part of your business and your customers' happiness.</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 900, once: true, offset: 60, easing: 'ease-out-cubic' });
+
+        // Mobile Nav Toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        const icon = menuToggle.querySelector('i');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Close nav when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -9,18 +9,26 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
+        /* Dusty Rose · Deep rose + blush gold */
         :root {
-            --bg:          #0f2d22;
-            --bg-card:     #112e20;
-            --bg-card-2:   #0d2a1e;
-            --gold:        #c9a96e;
-            --gold-light:  #e2c99a;
-            --gold-dim:    rgba(201, 169, 110, 0.13);
-            --gold-border: rgba(201, 169, 110, 0.28);
-            --text-main:   #f0ebe0;
-            --text-body:   #b8ccc0;
-            --text-muted:  rgba(184, 204, 192, 0.50);
-            --divider:     rgba(201, 169, 110, 0.16);
+            --bg:          #2d0f1a;
+            --bg-card:     #3d1525;
+            --bg-card-2:   #281018;
+            --accent:      #c96e8a;
+            --accent-soft: rgba(201, 110, 138, 0.14);
+            --accent-border: rgba(201, 110, 138, 0.35);
+            --gold:        #cca882;
+            --gold-light:  #e2cdb0;
+            --gold-dim:    rgba(204, 168, 130, 0.14);
+            --gold-border: rgba(204, 168, 130, 0.28);
+            --gold-strong: rgba(204, 168, 130, 0.45);
+            --text-main:   #ccc0bc;
+            --text-body:   #ccc0bc;
+            --text-muted:  rgba(204, 192, 188, 0.48);
+            --divider:     rgba(204, 168, 130, 0.16);
+            --line-faint:  rgba(204, 168, 130, 0.08);
+            --nav-bg:      rgba(45, 15, 26, 0.92);
+            --nav-bg-solid:rgba(45, 15, 26, 0.98);
         }
 
         html { scroll-behavior: smooth; scroll-padding-top: 80px; }
@@ -41,7 +49,7 @@
             z-index: 1000;
             display: flex; justify-content: space-between; align-items: center;
             padding: 16px 6%;
-            background: rgba(15, 45, 34, 0.92);
+            background: var(--nav-bg);
             backdrop-filter: blur(14px);
             border-bottom: 1px solid var(--divider);
             gap: 16px;
@@ -131,7 +139,7 @@
             position: absolute; top: 50%; left: 50%;
             transform: translate(-50%, -60%);
             width: 700px; height: 500px;
-            background: radial-gradient(ellipse, rgba(201,169,110,0.07) 0%, transparent 70%);
+            background: radial-gradient(ellipse, rgba(201, 110, 138, 0.09) 0%, rgba(204, 168, 130, 0.04) 40%, transparent 70%);
             pointer-events: none;
             z-index: 1;
         }
@@ -143,11 +151,11 @@
             display: inline-flex; align-items: center; gap: 10px;
             font-size: 0.68rem; font-weight: 600;
             letter-spacing: 0.22em; text-transform: uppercase;
-            color: var(--gold); margin-bottom: 20px;
+            color: var(--accent); margin-bottom: 20px;
         }
         .hero-eyebrow::before, .hero-eyebrow::after {
             content: ''; display: block;
-            width: 28px; height: 1px; background: var(--gold); opacity: 0.6;
+            width: 28px; height: 1px; background: var(--accent); opacity: 0.65;
         }
         .hero h1 {
             font-family: 'Playfair Display', serif;
@@ -162,9 +170,9 @@
         }
         .hero-badge {
             display: inline-block;
-            border: 1px solid var(--gold-border); color: var(--gold);
+            border: 1px solid var(--accent-border); color: var(--accent);
             font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
-            padding: 8px 22px; border-radius: 50px; background: var(--gold-dim);
+            padding: 8px 22px; border-radius: 50px; background: var(--accent-soft);
         }
 
         /* ── Floating Animation ──────────────── */
@@ -247,7 +255,7 @@
 
         .sparkle {
             position: absolute;
-            background: var(--gold);
+            background: var(--accent);
             border-radius: 50%;
             bottom: -20px;
         }
@@ -283,7 +291,7 @@
         .menu-section:hover {
             transform: translateY(-4px);
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
-            border-color: rgba(201, 169, 110, 0.45);
+            border-color: var(--gold-strong);
         }
 
         /* Section Header */
@@ -300,11 +308,11 @@
             display: inline-flex; align-items: center; gap: 8px;
             font-size: 0.65rem; font-weight: 600;
             letter-spacing: 0.20em; text-transform: uppercase;
-            color: var(--gold); margin-bottom: 8px;
+            color: var(--accent); margin-bottom: 8px;
         }
         .menu-section-eyebrow::before {
             content: ''; display: block;
-            width: 16px; height: 1px; background: var(--gold); opacity: 0.7;
+            width: 16px; height: 1px; background: var(--accent); opacity: 0.75;
         }
 
         .menu-section-title {
@@ -329,7 +337,7 @@
             padding: 4px 12px; border-radius: 50px;
             white-space: nowrap;
         }
-        .meta-pill i { color: var(--gold); font-size: 0.65rem; }
+        .meta-pill i { color: var(--accent); font-size: 0.65rem; }
 
         /* Item Rows */
         .menu-item {
@@ -338,7 +346,7 @@
             align-items: center;
             gap: 20px;
             padding: 18px 36px;
-            border-bottom: 1px solid rgba(201,169,110,0.07);
+            border-bottom: 1px solid var(--line-faint);
             transition: background 0.22s, padding-left 0.22s;
             position: relative;
         }
@@ -347,7 +355,7 @@
         .menu-item::before {
             content: '';
             position: absolute; left: 0; top: 25%; bottom: 25%;
-            width: 3px; background: var(--gold);
+            width: 3px; background: var(--accent);
             border-radius: 0 3px 3px 0;
             transform: scaleY(0); transform-origin: center;
             transition: transform 0.22s;
@@ -404,12 +412,58 @@
             font-size: 1.9rem; font-weight: 700;
             font-style: italic; color: var(--gold-light); margin-bottom: 6px;
         }
-        .thank-you {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.6rem; font-style: italic;
-            color: var(--text-main); margin-bottom: 12px;
+        .thank-you-note {
+            max-width: 540px;
+            margin: 0 auto;
+            padding: 32px 36px 34px;
+            background: linear-gradient(165deg, var(--accent-soft) 0%, rgba(61, 21, 37, 0.45) 100%);
+            border: 1px solid var(--accent-border);
+            border-radius: 22px;
+            box-shadow: 0 14px 40px rgba(0, 0, 0, 0.2);
+            position: relative;
         }
-        footer > p { color: var(--text-muted); max-width: 480px; margin: 0 auto; font-size: 0.88rem; }
+        .thank-you-note::before {
+            content: '✿';
+            position: absolute;
+            top: 14px;
+            right: 18px;
+            font-size: 1.1rem;
+            color: var(--gold);
+            opacity: 0.45;
+        }
+        .thank-you-note-icon {
+            font-size: 1.75rem;
+            line-height: 1;
+            margin-bottom: 14px;
+            filter: drop-shadow(0 2px 6px rgba(201, 110, 138, 0.25));
+        }
+        .thank-you-note-lead {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.35rem, 3.5vw, 1.65rem);
+            font-weight: 700;
+            font-style: italic;
+            color: var(--gold-light);
+            margin-bottom: 18px;
+            line-height: 1.35;
+        }
+        .thank-you-note-body {
+            text-align: left;
+            font-size: 0.9rem;
+            line-height: 1.85;
+            color: var(--text-body);
+        }
+        .thank-you-note-body p { margin-bottom: 14px; }
+        .thank-you-note-body p:last-of-type { margin-bottom: 0; }
+        .thank-you-note-signoff {
+            margin-top: 22px;
+            padding-top: 18px;
+            border-top: 1px solid var(--line-faint);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            font-style: italic;
+            font-weight: 700;
+            color: var(--accent);
+        }
         .footer-contact { margin-top: 36px; display: flex; flex-direction: column; gap: 5px; color: var(--text-body); font-size: 0.86rem; }
         .footer-contact strong { color: var(--gold-light); }
         .fssai-box {
@@ -438,7 +492,7 @@
         .single-bento-card:hover {
             transform: translateY(-4px);
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
-            border-color: rgba(201, 169, 110, 0.45);
+            border-color: var(--gold-strong);
         }
         .single-bento-card::before {
             content: '';
@@ -497,7 +551,7 @@
                 top: 100%;
                 left: 0;
                 width: 100%;
-                background: rgba(15, 45, 34, 0.98);
+                background: var(--nav-bg-solid);
                 backdrop-filter: blur(14px);
                 flex-direction: column;
                 align-items: flex-start;
@@ -529,6 +583,8 @@
             .single-bento-card { grid-template-columns: 1fr; gap: 30px; padding: 30px 24px; }
             .bento-divider { width: 100%; height: 1px; background: linear-gradient(to right, transparent, var(--gold-border), transparent); }
             .hero { padding: 140px 6% 70px; }
+            .thank-you-note { padding: 26px 22px 28px; }
+            .thank-you-note::before { right: 14px; top: 12px; }
         }
     </style>
 </head>
@@ -759,6 +815,7 @@
         <div class="nav-links">
             <a href="#brownies">Brownies</a>
             <a href="#buns">Buns</a>
+            <a href="#breads">Breads</a>
             <a href="#puffs">Puffs</a>
             <a href="#cakes-rolls">Cakes & Rolls</a>
             <a href="#cookies">Cookies</a>
@@ -868,10 +925,52 @@
             </div>
             <div class="menu-item">
                 <div class="menu-item-left">
+                    <div class="menu-item-name">Coconut Bun</div>
+                    <div class="menu-item-desc">Soft bun with sweet coconut filling</div>
+                </div>
+                <span class="menu-item-price">₹15</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-left">
                     <div class="menu-item-name">Garlic Bread</div>
                     <div class="menu-item-desc">Crispy edges · buttery garlic aroma</div>
                 </div>
                 <span class="menu-item-price">₹15</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-left">
+                    <div class="menu-item-name">Pineapple Bun</div>
+                    <div class="menu-item-desc">Tropical pineapple jam in a pillowy soft bun</div>
+                </div>
+                <span class="menu-item-price">₹15</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-left">
+                    <div class="menu-item-name">Bun Butter Jam</div>
+                    <div class="menu-item-desc">Classic combo · butter and jam in a soft bun</div>
+                </div>
+                <span class="menu-item-price">₹15</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-left">
+                    <div class="menu-item-name">Thunder Coconut Bun</div>
+                    <div class="menu-item-desc">Extra-indulgent coconut bun · rich &amp; soft</div>
+                </div>
+                <span class="menu-item-price">₹18</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-left">
+                    <div class="menu-item-name">Orange Marmalade</div>
+                    <div class="menu-item-desc">Bright citrus marmalade in a soft bun</div>
+                </div>
+                <span class="menu-item-price">₹18</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-left">
+                    <div class="menu-item-name">Bun Maska</div>
+                    <div class="menu-item-desc">Classic Irani café style · butter-slathered</div>
+                </div>
+                <span class="menu-item-price">₹20</span>
             </div>
             <div class="menu-item">
                 <div class="menu-item-left">
@@ -880,12 +979,43 @@
                 </div>
                 <span class="menu-item-price">₹30</span>
             </div>
+        </div>
+
+        <div class="ornament-divider"><i class="fas fa-seedling"></i></div>
+
+        <!-- ══ BREADS ══ -->
+        <div class="menu-section" id="breads" data-aos="fade-up">
+            <div class="menu-section-header">
+                <div>
+                    <div class="menu-section-eyebrow">Loaf Range</div>
+                    <div class="menu-section-title">Breads</div>
+                </div>
+                <div class="menu-section-meta">
+                    <div class="meta-pill"><i class="fas fa-clock"></i> Shelf Life: 4 Days</div>
+                    <div class="meta-pill"><i class="fas fa-box"></i> Store in a cool and dry place</div>
+                    <div class="meta-pill"><i class="fas fa-flask"></i> Flour · Yeast · Water · Salt</div>
+                </div>
+            </div>
             <div class="menu-item">
                 <div class="menu-item-left">
-                    <div class="menu-item-name">Bun Maska</div>
-                    <div class="menu-item-desc">Classic Irani café style · butter-slathered</div>
+                    <div class="menu-item-name">Wheat Bread</div>
+                    <div class="menu-item-desc">Hearty whole-wheat loaf · everyday slices</div>
                 </div>
-                <span class="menu-item-price">₹20</span>
+                <span class="menu-item-price">₹30</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-left">
+                    <div class="menu-item-name">Refined Wheat Bread</div>
+                    <div class="menu-item-desc">Soft classic loaf · refined flour</div>
+                </div>
+                <span class="menu-item-price">₹30</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-left">
+                    <div class="menu-item-name">Multigrain Bread</div>
+                    <div class="menu-item-desc">Mixed grains &amp; seeds · nutty texture</div>
+                </div>
+                <span class="menu-item-price">₹40</span>
             </div>
         </div>
 
@@ -941,7 +1071,7 @@
             </div>
 
             <!-- Subheader: Tea Cakes & Puddings -->
-            <div style="padding: 20px 36px 10px; font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--gold); border-bottom: 1px solid rgba(201,169,110,0.1);">
+            <div style="padding: 20px 36px 10px; font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--gold); border-bottom: 1px solid var(--line-faint);">
                 Tea Cakes &amp; Puddings
             </div>
 
@@ -971,7 +1101,7 @@
             </div>
 
             <!-- Subheader: Roll Cakes -->
-            <div style="padding: 24px 36px 10px; font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--gold); border-bottom: 1px solid rgba(201,169,110,0.1); border-top: 1px solid rgba(201,169,110,0.07);">
+            <div style="padding: 24px 36px 10px; font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--gold); border-bottom: 1px solid var(--line-faint); border-top: 1px solid var(--line-faint);">
                 Roll Cakes
             </div>
 
@@ -1092,7 +1222,7 @@
                 <div class="bento-card-content">
                     <div class="bento-contact-row">
                         <i class="fas fa-phone-alt" style="font-size: 0.95em;"></i>
-                        <div><strong>Phone:</strong> <a href="tel:+910000000000">+91 00000 00000</a></div>
+                        <div><strong>Phone:</strong> <a href="tel:+919087921687">+919087921687</a></div>
                     </div>
                     <div class="bento-contact-row">
                         <i class="fas fa-user"></i>
@@ -1135,9 +1265,16 @@
             <img src="logo.jpeg" alt="Treats of Rithu Logo">
             <span>Treats of Rithu</span>
         </div>
-        <div class="gold-rule" style="margin-bottom:22px;" data-aos="fade-up"></div>
-        <div class="thank-you" data-aos="fade-up">Thank You for Growing with Us</div>
-        <p data-aos="fade-up">We truly appreciate your trust and support. It means a lot to us to be part of your business and your customers' happiness.</p>
+        <div class="gold-rule" style="margin-bottom:28px;" data-aos="fade-up"></div>
+        <div class="thank-you-note" data-aos="fade-up" data-aos-delay="80">
+            <div class="thank-you-note-icon" aria-hidden="true">🧁</div>
+            <div class="thank-you-note-lead">Thank you for choosing Treats of Rithu!</div>
+            <div class="thank-you-note-body">
+                <p>We truly appreciate your trust and support. It means a lot to us to be part of your business and your customers&rsquo; happiness.</p>
+                <p>We look forward to serving you again with the best quality bakery products.</p>
+            </div>
+            <p class="thank-you-note-signoff">Thank you for growing with us!</p>
+        </div>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
